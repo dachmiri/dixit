@@ -4,7 +4,15 @@
     width: 150px;
 }
 .big-grid{
-    background-image: url("./Imgs/BG.jpg");
+    background-image: url("./Imgs/whiteBG.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
     width: 100vw;
     height: 100vh;
+}
+p{
+    font-style: italic
+}
+h1, h2{
+    font-family: Georgia;
 }
