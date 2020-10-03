@@ -53,8 +53,29 @@ class Game extends React.Component
     {
         let cardImg = 'cardsImg/' + i + '.jpg';
         return(
-            <Button onClick={() => this.onCardClick(i)} className={"card"} style={{backgroundImage: `url(${cardImg})`, backgroundSize: "cover", backgroundRepeat: "no-repeat"}}> </Button>
+            <Button
+                className={"card"}
+                style={{backgroundImage: `url(${cardImg})`, backgroundSize: "cover", backgroundRepeat: "no-repeat"}}>
+            </Button>
         );
+    }
+    renderPlayer(i)
+    {
+        return (
+            <Grid item container direction={"row"} spacing={3} alignItems={"center"}>
+                <Grid item>
+                    <Button
+                        disableRipple={true}
+                        style={{backgroundImage: `url(${this.state.players[i].state.icon})`,
+                            backgroundSize: "cover",
+                            minWidth: "100px",
+                            minHeight: "100px"}}>
+                    </Button>
+                </Grid>
+                <Grid item><p>{this.state.players[i].state.pName}</p> </Grid>
+                <Grid item><p>{this.state.players[i].state.score}</p> </Grid>
+            </Grid>
+        )
     }
     render() {
         return (
@@ -63,43 +84,10 @@ class Game extends React.Component
                     <Grid item><h1>You are the storyteller</h1></Grid>
                     <Grid item><h2>pick a card</h2></Grid>
                 </Grid>
-                <Grid item container className={"players"}>
-                    <Grid item container direction={"row"} spacing={3} alignItems={"center"}>
-                        <Grid item>
-                            <Button
-                                style={{backgroundImage: `url(${this.state.players[3].state.icon})`,
-                                        backgroundSize: "cover",
-                                        minWidth: "100px",
-                                        minHeight: "100px"}}>
-                            </Button>
-                        </Grid>
-                        <Grid item><p>{this.state.players[3].state.pName}</p></Grid>
-                        <Grid item><p>{this.state.players[3].state.score}</p></Grid>
-                    </Grid>
-                    <Grid item container direction={"row"} spacing={3} alignItems={"center"}>
-                        <Grid item>
-                            <Button
-                                style={{backgroundImage: `url(${this.state.players[4].state.icon})`,
-                                       backgroundSize: "cover",
-                                       minWidth: "100px",
-                                       minHeight: "100px"}}>
-                            </Button>
-                        </Grid>
-                        <Grid item><p>{this.state.players[4].state.pName}</p> </Grid>
-                        <Grid item><p>{this.state.players[4].state.score}</p> </Grid>
-                    </Grid>
-                    <Grid item container direction={"row"} spacing={3} alignItems={"center"}>
-                        <Grid item>
-                            <Button
-                                style={{backgroundImage: `url(${this.state.players[5].state.icon})`,
-                                        backgroundSize: "cover",
-                                        minWidth: "100px",
-                                        minHeight: "100px"}}>
-                            </Button>
-                        </Grid>
-                        <Grid item><p>{this.state.players[5].state.pName}</p> </Grid>
-                        <Grid item><p>{this.state.players[5].state.score}</p> </Grid>
-                    </Grid>
+                <Grid item container className={"players"} direction={"column"}>
+                    <Grid item>{this.renderPlayer(3)}</Grid>
+                    <Grid item>{this.renderPlayer(4)}</Grid>
+                    <Grid item>{this.renderPlayer(5)}</Grid>
                 </Grid>
                 <Grid item container direction={"row"} justify={"space-around"} alignItems={"center"} >
                     <Grid item>{this.renderCard(0)}</Grid>

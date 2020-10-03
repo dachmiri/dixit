@@ -15,4 +15,5 @@ p{
 }
 h1, h2{
     font-family: Georgia;
+    text-shadow: 2px 2px white;
 }
