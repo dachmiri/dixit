@@ -8,7 +8,6 @@ const cardsInHand = 6
 const playersInGame = 3 //Will come from server later
 class Game extends React.Component
 {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -44,11 +43,17 @@ class Game extends React.Component
         }
         this.state.cards = tempCards;
     }
+
+    onCardClick(i)
+    {
+    console.log('The card  was clicked. ' + i);
+    }
+
     renderCard(i)
     {
         let cardImg = 'cardsImg/' + i + '.jpg';
         return(
-            <Button className={"card"} style={{backgroundImage: `url(${cardImg})`, backgroundSize: "cover", backgroundRepeat: "no-repeat"}}> </Button>
+            <Button onClick={() => this.onCardClick(i)} className={"card"} style={{backgroundImage: `url(${cardImg})`, backgroundSize: "cover", backgroundRepeat: "no-repeat"}}> </Button>
         );
     }
     render() {
@@ -108,6 +113,7 @@ class Game extends React.Component
         );
     }
 }
+
 class Card extends React.Component
 {
     constructor(props) {
